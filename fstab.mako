@@ -4,8 +4,10 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 /dev/block/platform/msm_sdcc.1/by-name/system       /system         ext4    ro,barrier=1                                                    wait
-/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          ext4    noatime,nosuid,nodev,barrier=1,data=ordered                     wait,check
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc     wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          ext4    nodiratime,noatime,nosuid,nodev,barrier=1,data=ordered                     wait,check
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          f2fs    nodiratime,noatime,nosuid,nodev,inline_xattr                     wait,check
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    nodiratime,noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc     wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           f2fs    nodiratime,noatime,nosuid,nodev,inline_xattr     wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
 /dev/block/platform/msm_sdcc.1/by-name/persist      /persist        ext4    nosuid,nodev,barrier=1,data=ordered,nodelalloc                  wait
 /dev/block/platform/msm_sdcc.1/by-name/modem        /firmware       vfat    ro,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:radio_efs_file:s0                        wait
 /dev/block/platform/msm_sdcc.1/by-name/boot         /boot           emmc    defaults                                                        defaults
@@ -18,3 +20,26 @@
 /dev/block/platform/msm_sdcc.1/by-name/tz           /tz             emmc    defaults                                                        defaults
 /dev/block/platform/msm_sdcc.1/by-name/rpm          /rpm            emmc    defaults                                                        defaults
 /dev/block/platform/msm_sdcc.1/by-name/aboot        /aboot          emmc    defaults                                                        defaults
+=======
+/dev/block/platform/msm_sdcc.1/by-name/system       /system         ext4    ro,barrier=1                                                                 wait
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          ext4    noatime,nodiratime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic     wait,check
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          f2fs    noatime,nosuid,nodev,rw,discard,inline_xattr                             wait,check
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    noatime,nodiratime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic     wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/metadata
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,rw,discard,inline_xattr                             wait,check,encryptable=/dev/block/platform/msm_sdcc.1/by-name/reserve4
+/dev/block/platform/msm_sdcc.1/by-name/persist      /persist        ext4    noatime,nodiratime,nosuid,nodev,barrier=1,data=ordered,nodelalloc                               wait
+/dev/block/platform/msm_sdcc.1/by-name/boot         /boot           emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery       emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/misc         /misc           emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/sbl1         /sbl1           emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/sbl2         /sbl2           emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/sbl3         /sbl3           emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/tz           /tz             emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/rpm          /rpm            emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/aboot        /aboot          emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/sbl2b        /sbl2b          emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/sbl3b        /sbl3b          emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/tzb          /tzb            emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/rpmb         /rpmb           emmc    defaults                                                                     defaults
+/dev/block/platform/msm_sdcc.1/by-name/abootb       /abootb         emmc    defaults                                                                     defaults
+/devices/platform/msm_hsusb_host/usb                auto            auto    defaults                                                                     voldmanaged=usbdisk:auto,noemulatedsd
+>>>>>>> 684ae27... fstab: support f2fs for /data and /cache:fstab.flo
