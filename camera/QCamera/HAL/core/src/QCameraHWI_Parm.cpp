@@ -3480,7 +3480,7 @@ status_t QCameraHardwareInterface::setPreviewSizeTable(void)
         preview_size_table++;
     }
     //set preferred preview size to maximum preview size
-    sprintf(str, "%dx%d", preview_size_table->width, preview_size_table->height);
+    snprintf(str, 10, "%dx%d", preview_size_table->width, preview_size_table->height);
     mParameters.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, str);
     LOGD("KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO = %s", str);
 
