@@ -1,7 +1,7 @@
 [
  {
-   "repository": "kernel_google_msm",
-   "target_path": "kernel/google/msm"
+   "repository": "kernel_lge_mako",
+   "target_path": "kernel/lge/mako"
  },
  {
    "repository": "external_stlport",
